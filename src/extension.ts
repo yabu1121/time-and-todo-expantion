@@ -28,7 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
     myStatusBarItem.text = `${formatTime(timeContainter)}`;
   } else {
     // 停止中はアイコンを変えるなどの演出も可能
-    myStatusBarItem.text = `$(debug-pause) 一時停止中: ${formatTime(timeContainter).replace('$(watch)', '')}`;
+    myStatusBarItem.text = `${isRunning ? '$(pencil)' : '$(debug-pause)'} ${formatTime(timeContainter)}`;
   }
   myStatusBarItem.show();
 }, 1000);

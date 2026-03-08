@@ -31,15 +31,21 @@ type TimeContainer = {
 		}
 	}
 
-	export const formatTime = (time: TimeContainer) => {
-	 	if (!time.hours && !time.minutes){
-      return `$(watch)経過時間${time.seconds}秒`
-		}else if (!time.hours){
-		  return `$(watch)経過時間${time.minutes}分${time.seconds}秒`
-		}else {
-			return `$(watch)経過時間${time.hours}時間${time.minutes}分${time.seconds}秒`
-		}
-	}
+	// util/time.ts 内の formatTime を修正
+export const formatTime = (time: TimeContainer) => {
+  // 数字を2桁の文字列に変換するヘルパー
+  const p = (n: number) => n.toString().padStart(2, '0');
+
+  const hh = p(time.hours);
+  const mm = p(time.minutes);
+  const ss = p(time.seconds);
+
+  if (time.hours === 0) {
+    return `${mm}:${ss}`;
+  } else {
+    return `${hh}:${mm}:${ss}`;
+  }
+};
 
 	export const toggle = () => {
 		const running: boolean = toggleTimer();
