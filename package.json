@@ -9,15 +9,16 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:time.helloWorld"
-  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "time.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "time.toggleTimer",
+        "title": "タイマーの開始/停止"
       }
     ]
   },
